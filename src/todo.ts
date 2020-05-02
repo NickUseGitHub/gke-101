@@ -1,16 +1,26 @@
 import Router from 'koa-router'
 import { Context } from 'koa'
-import { getRepository } from 'typeorm'
+import { getRepository, getManager } from 'typeorm'
 
 import { Todo } from './entities/todo'
 
-const todo = new Router()
+const todoRouter = new Router()
 
-todo.get('/todo', async function (ctx: Context) {
+todoRouter.get('/todo', async function (ctx: Context) {
   const todoRepository = getRepository(Todo)
-  const [todoes, totalCount] = await todoRepository.findAndCount()
+  const todoes = await todoRepository.find()
 
   ctx.body = todoes
 })
 
-export default todo
+todoRouter.post('/todo', async function (ctx: Context) {
+  const todo = new Todo()
+  todo.name = ctx.request.body.name
+
+  const entityManager = getManager()
+  await entityManager.save(todo)
+
+  ctx.body = todo
+})
+
+export default todoRouter
