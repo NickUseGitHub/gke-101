@@ -1,8 +1,12 @@
 import Koa, { Context } from 'koa'
+import bodyParser from 'koa-bodyparser'
+
 import { EnvTypes } from './types/default'
 import todo from './todo'
 
 const app = new Koa()
+
+app.use(bodyParser())
 
 // logger
 if ((process.env.PROJECT_ENV as EnvTypes) === 'development') {
