@@ -1,4 +1,5 @@
 import Koa, { Context } from 'koa'
+import todo from './todo'
 
 const app = new Koa()
 
@@ -21,8 +22,6 @@ app.use(async (ctx: Context, next: Function) => {
 
 // response
 
-app.use(async (ctx: Context) => {
-  ctx.body = 'Hello World'
-})
+app.use(todo.routes())
 
 export default app
