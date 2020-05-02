@@ -2,7 +2,7 @@ import Koa, { Context } from 'koa'
 import bodyParser from 'koa-bodyparser'
 
 import { EnvTypes } from './types/default'
-import todo from './todo'
+import healthcheck from './apis/healthcheck'
 
 const app = new Koa()
 
@@ -29,6 +29,6 @@ if ((process.env.PROJECT_ENV as EnvTypes) === 'development') {
 
 // response
 
-app.use(todo.routes())
+app.use(healthcheck.routes())
 
 export default app
