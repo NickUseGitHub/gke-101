@@ -1,0 +1,1 @@
+export type EnvTypes = 'development' | 'staging' | 'production'
