@@ -1,15 +1,16 @@
-import './configs'
+import './envInitiator'
+import { PORT, PROJECT_ENV } from './configs'
 // import { Connection } from 'typeorm'
 // import initialConnection from './connections'
 import app from './app'
 
-const port = process.env.PORT || 3000
+const port = PORT
 
 app.listen(port, () => {
   console.log(
     '  App is running at http://localhost:%d in %s mode',
-    process.env.PORT,
-    process.env.PROJECT_ENV,
+    PORT,
+    PROJECT_ENV,
   )
   console.log('  Press CTRL-C to stop\n')
 })
@@ -29,8 +30,8 @@ app.listen(port, () => {
 
 //       console.log(
 //         '  App is running at http://localhost:%d in %s mode',
-//         process.env.PORT,
-//         process.env.PROJECT_ENV,
+//         PORT,
+//         PROJECT_ENV,
 //       )
 //       console.log('  Press CTRL-C to stop\n')
 //     })

@@ -16,9 +16,20 @@ spec:
     spec:
       containers:
         - name: node-api
-          image: asia.gcr.io/gke-101-276011/gke-node:v1
+          image: asia.gcr.io/gke-101-276011/gke-node:v2
           ports:
             - containerPort: 3000
+          env:
+            - name: PROJECT_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: project_env
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: port
 
 ---
 apiVersion: v1
