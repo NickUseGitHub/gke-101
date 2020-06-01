@@ -21,7 +21,7 @@ spec:
             secretName: cloudsql-sa-creds
       containers:
         - name: node-api
-          image: asia.gcr.io/gke-101-276011/gke-node:v2
+          image: asia.gcr.io/gke-101-276011/gke-node:v3
           ports:
             - containerPort: 3000
           env:
@@ -35,6 +35,31 @@ spec:
                 secretKeyRef:
                   name: gke101-secret
                   key: port
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: db_port
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: db_host
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: db_username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: db_password
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: gke101-secret
+                  key: db_database
         - image: gcr.io/cloudsql-docker/gce-proxy:1.11
           name: cloudsql-proxy
           ports:

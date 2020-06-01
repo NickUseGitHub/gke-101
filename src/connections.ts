@@ -1,17 +1,24 @@
 import { createConnection, Connection } from 'typeorm'
+import {
+  DB_PORT,
+  DB_HOST,
+  DB_USERNAME,
+  DB_PASSWORD,
+  DB_DATABASE,
+} from './configs'
 
 async function connectToDB(tryCount: number): Promise<Connection | null> {
   if (tryCount <= 0) return null
 
   try {
-    const dbPort: number = Number(process.env.DB_PORT) || 5432
+    const dbPort: number = Number(DB_PORT) || 5432
     const connection: Connection = await createConnection({
       type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
+      host: DB_HOST || 'localhost',
       port: dbPort,
-      username: process.env.DB_USERNAME || 'postgres',
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      username: DB_USERNAME || 'postgres',
+      password: DB_PASSWORD,
+      database: DB_DATABASE,
       entities: [`${__dirname}/entities/*.js`],
     })
     return connection
