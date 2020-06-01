@@ -6,14 +6,14 @@ import { Todo } from '../entities/todo'
 
 const todoRouter = new Router()
 
-todoRouter.get('/todo', async function (ctx: Context) {
+todoRouter.get('/testpath', async function (ctx: Context) {
   const todoRepository = getRepository(Todo)
   const todoes = await todoRepository.find()
 
   ctx.body = todoes
 })
 
-todoRouter.post('/todo', async function (ctx: Context) {
+todoRouter.post('/testpath', async function (ctx: Context) {
   const todo = new Todo()
   todo.name = ctx.request.body.name
 
