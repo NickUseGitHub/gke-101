@@ -21,7 +21,7 @@ spec:
             secretName: cloudsql-sa-creds
       containers:
         - name: node-api
-          image: asia.gcr.io/gke-101-276011/gke-node:v4
+          image: asia.gcr.io/gke-101-276011/gke-node:v3
           ports:
             - containerPort: 3000
           env:

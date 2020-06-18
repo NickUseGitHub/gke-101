@@ -1,3 +1,6 @@
+db
 dist
+k8s
+node_modules
 .vscode
 .env.example
