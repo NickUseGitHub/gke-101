@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: hello-web-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: gke101-web-static-ip
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: node-api-service
+              servicePort: 3000

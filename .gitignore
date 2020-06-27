@@ -14,6 +14,9 @@ results
 tmp
 db
 
+# authen keys
+k8s/authen
+
 # Build
 public/css/main.css
 

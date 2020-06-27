@@ -2,11 +2,11 @@ import Router from 'koa-router'
 import { Context } from 'koa'
 import { getRepository, getManager } from 'typeorm'
 
-import { Todo } from './entities/todo'
+import { Todo } from '../entities/todo'
 
 const todoRouter = new Router()
 
-todoRouter.get('/todo', async function (ctx: Context) {
+todoRouter.get('/todos', async function (ctx: Context) {
   const todoRepository = getRepository(Todo)
   const todoes = await todoRepository.find()
 

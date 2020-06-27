@@ -1,12 +1,13 @@
-import './configs'
+import './envInitiator'
+import { PORT, PROJECT_ENV } from './configs'
+import { Connection } from 'typeorm'
 import initialConnection from './connections'
 import app from './app'
-import { Connection } from 'typeorm'
 
-const port = process.env.PORT || 3000
+const port = PORT
 
 /**
- * Start Express server.
+ * Start Koa server.
  */
 initialConnection()
   .then(function (connection: Connection) {
@@ -19,9 +20,9 @@ initialConnection()
       }
 
       console.log(
-        '  App is running at http://localhost:%d in %s mode',
-        process.env.PORT,
-        process.env.PROJECT_ENV,
+        '  App version V.3 is running at http://localhost:%d in %s mode',
+        PORT,
+        PROJECT_ENV,
       )
       console.log('  Press CTRL-C to stop\n')
     })
