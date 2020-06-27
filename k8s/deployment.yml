@@ -64,32 +64,32 @@ spec:
                 secretKeyRef:
                   name: gke101-secret
                   key: db_database
-        - image: gcr.io/cloudsql-docker/gce-proxy:1.11
-          name: cloudsql-proxy
-          ports:
-            - containerPort: 5432
-          # You can make environment variables from GKE configurations
-          # You can read them from a configmap directly with configMapKeyRef
-          env:
-            - name: INSTANCE_CONNECTION
-              valueFrom:
-                configMapKeyRef:
-                  name: sql-connection
-                  key: connectionname
-          command: [
-              '/cloud_sql_proxy',
-              '-instances=$(INSTANCE_CONNECTION)=tcp:5432',
-              # We are accessing the secret file inside the volume.
-              # In most circumstances you would use environment variables but
-              # the Cloud SQL Proxy container wants a file so we give it one
-              '-credential_file=/secrets/cloudsql/credentials.json',
-            ]
-          # Once the volume is made earlier in the file you then mount the
-          # volume so you can access the secret file inside it
-          volumeMounts:
-            - name: cloudsql-sa-creds
-              mountPath: /secrets/cloudsql
-              readOnly: true
+        # - image: gcr.io/cloudsql-docker/gce-proxy:1.11
+        #   name: cloudsql-proxy
+        #   ports:
+        #     - containerPort: 5432
+        #   # You can make environment variables from GKE configurations
+        #   # You can read them from a configmap directly with configMapKeyRef
+        #   env:
+        #     - name: INSTANCE_CONNECTION
+        #       valueFrom:
+        #         configMapKeyRef:
+        #           name: sql-connection
+        #           key: connectionname
+        #   command: [
+        #       '/cloud_sql_proxy',
+        #       '-instances=$(INSTANCE_CONNECTION)=tcp:5432',
+        #       # We are accessing the secret file inside the volume.
+        #       # In most circumstances you would use environment variables but
+        #       # the Cloud SQL Proxy container wants a file so we give it one
+        #       '-credential_file=/secrets/cloudsql/credentials.json',
+        #     ]
+        #   # Once the volume is made earlier in the file you then mount the
+        #   # volume so you can access the secret file inside it
+        #   volumeMounts:
+        #     - name: cloudsql-sa-creds
+        #       mountPath: /secrets/cloudsql
+        #       readOnly: true
 
 ---
 apiVersion: v1
