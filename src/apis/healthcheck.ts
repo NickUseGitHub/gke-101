@@ -3,7 +3,7 @@ import { Context } from 'koa'
 
 const healthcheckRouter = new Router()
 
-healthcheckRouter.get('/', function (ctx: Context) {
+healthcheckRouter.get('/health', function (ctx: Context) {
   ctx.body = {
     message: 'app is ok.',
   }

@@ -30,7 +30,7 @@ if ((process.env.PROJECT_ENV as EnvTypes) === 'development') {
 
 // response
 
-app.use(healthcheck.routes())
 app.use(todo.routes())
+app.use(healthcheck.routes())
 
 export default app
