@@ -13,14 +13,14 @@ todoRouter.get('/todos', async function (ctx: Context) {
   ctx.body = todoes
 })
 
-todoRouter.post('/todo', async function (ctx: Context) {
-  const todo = new Todo()
-  todo.name = ctx.request.body.name
+// todoRouter.post('/todo', async function (ctx: Context) {
+//   const todo = new Todo()
+//   todo.name = ctx.request.body.name
 
-  const entityManager = getManager()
-  await entityManager.save(todo)
+//   const entityManager = getManager()
+//   await entityManager.save(todo)
 
-  ctx.body = todo
-})
+//   ctx.body = todo
+// })
 
 export default todoRouter
