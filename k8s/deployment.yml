@@ -14,11 +14,11 @@ spec:
       labels:
         app: node-api
     spec:
-      volumes:
-        # If you made a secret as a file you can create a volume from it
-        - name: cloudsql-sa-creds
-          secret:
-            secretName: cloudsql-sa-creds
+      # volumes:
+      # If you made a secret as a file you can create a volume from it
+      # - name: cloudsql-sa-creds
+      #   secret:
+      #     secretName: cloudsql-sa-creds
       containers:
         - name: node-api
           image: asia.gcr.io/gke-101-276011/gke-node:v3
