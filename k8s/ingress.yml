@@ -4,6 +4,7 @@ metadata:
   name: hello-web-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: gke101-web-static-ip
+    networking.gke.io/managed-certificates: be-ngong-cer
 spec:
   rules:
     - http:

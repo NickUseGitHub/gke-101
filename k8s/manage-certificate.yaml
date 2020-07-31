@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: be-ngong-cer
+spec:
+  domains:
+    - www.be-ngong.com
